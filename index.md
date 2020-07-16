@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # reclab
 
 Reclab is a flexible simulation environment for evaluating recommender systems.
