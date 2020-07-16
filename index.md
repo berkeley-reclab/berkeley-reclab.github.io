@@ -1,8 +1,10 @@
 ---
 layout: default
 ---
-# reclab
+Text can be **bold**, _italic_, or ~~strikethrough~~.
 
-Reclab is a flexible simulation environment for evaluating recommender systems.
-To read the docs, go here.
-To read the paper, go here.
+[Link to another page](./another-page.html).
+
+There should be whitespace between paragraphs.
+
+There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
