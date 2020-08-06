@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.4" />
+<title>reclab.recommenders.cfnade.cfnade API documentation</title>
+<meta name="description" content="Implementation of the CF-NADE recommender using Keras." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>reclab.recommenders.cfnade.cfnade</code></h1>
+</header>
+<section id="section-intro">
+<p>Implementation of the CF-NADE recommender using Keras.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Implementation of the CF-NADE recommender using Keras.&#34;&#34;&#34;
+from keras.layers import Input, Dropout, Lambda, add
+from keras.models import Model
+import keras.regularizers
+from keras.optimizers import Adam
+import numpy as np
+
+from .cfnade_lib.nade import NADE
+from .cfnade_lib import utils
+from .. import recommender
+
+
+class Cfnade(recommender.PredictRecommender):
+    &#34;&#34;&#34;
+    A Neural Autoregressive Distribution Estimator (NADE) for collaborative filtering (CF) tasks.
+
+    Parameters
+    ---------
+    num_users : int
+        Number of users in the environment.
+    num_items : int
+        Number of items in the environment.
+    train_set : np.matrix
+        Matrix of shape (num_users, num_items) populated with user ratings.
+    train_epoch : int
+        Number of epochs to train for each call.
+    batch_size : int
+        Batch size during initial training phase.
+    rating_bucket: int
+        number of rating buckets
+    rate_score: array of float
+        An array of corresponding rating score for each bucket
+    hidden_dim: int
+        hidden dimension to construct the layer
+    learning_rate: float
+        learning rate
+
+    &#34;&#34;&#34;
+
+    def __init__(
+            self, num_users, num_items,
+            batch_size=64, train_epoch=10,
+            rating_bucket=5, hidden_dim=500,
+            learning_rate=0.001, normalized_layer=False):
+        &#34;&#34;&#34;Create new Cfnade recommender.&#34;&#34;&#34;
+        super().__init__()
+        self._num_users = num_users
+        self._num_items = num_items
+        self._batch_size = batch_size
+        if num_items &lt;= batch_size:
+            self._batch_size = num_items
+        self._input_dim0 = num_users
+        self._rating_bucket = rating_bucket
+        self._rate_score = np.array(np.arange(1, rating_bucket+1), np.float32)
+        self._hidden_dim = hidden_dim
+        self._learning_rate = learning_rate
+        self._train_epoch = train_epoch
+        self._hyperparameters.update(locals())
+        self._new_items = np.zeros(num_items)
+
+        # We only want the function arguments so remove class related objects.
+        del self._hyperparameters[&#39;self&#39;]
+        del self._hyperparameters[&#39;__class__&#39;]
+
+        # Prepare model
+        input_layer = Input(shape=(self._input_dim0, self._rating_bucket), name=&#39;input_ratings&#39;)
+        output_ratings = Input(shape=(self._input_dim0, self._rating_bucket), name=&#39;output_ratings&#39;)
+        input_masks = Input(shape=(self._input_dim0,), name=&#39;input_masks&#39;)
+        output_masks = Input(shape=(self._input_dim0,), name=&#39;output_masks&#39;)
+        nade_layer = Dropout(0.0)(input_layer)
+        nade_layer = NADE(
+                        hidden_dim=self._hidden_dim, activation=&#39;tanh&#39;, bias=True,
+                        W_regularizer=keras.regularizers.l2(0.02),
+                        V_regularizer=keras.regularizers.l2(0.02),
+                        b_regularizer=keras.regularizers.l2(0.02),
+                        c_regularizer=keras.regularizers.l2(0.02),
+                        normalized_layer=normalized_layer)(nade_layer)
+
+        predicted_ratings = Lambda(
+            utils.prediction_layer,
+            output_shape=utils.prediction_output_shape,
+            name=&#39;predicted_ratings&#39;)(nade_layer)
+
+        func_d = Lambda(
+            utils.d_layer, output_shape=utils.d_output_shape,
+            name=&#39;func_d&#39;)(input_masks)
+        sum_masks = add([input_masks, output_masks])
+        func_d_2 = Lambda(
+            utils.D_layer, output_shape=utils.D_output_shape,
+            name=&#39;func_d_2&#39;)(sum_masks)
+        loss_out = Lambda(
+            utils.rating_cost_lambda_func, output_shape=(1, ),
+            name=&#39;nade_loss&#39;)([nade_layer, output_ratings,
+                               input_masks, output_masks, func_d_2, func_d])
+
+        self._cf_nade_model = Model(
+            inputs=[input_layer, output_ratings, input_masks, output_masks],
+            outputs=[loss_out, predicted_ratings])
+        optimizer = Adam(self._learning_rate, 0.9, 0.999, 1e-8)
+        self._cf_nade_model.compile(
+            loss={&#39;nade_loss&#39;: lambda y_true, y_pred: y_pred},
+            optimizer=optimizer)
+        self._cf_nade_model.save_weights(&#39;model.h5&#39;)
+
+    @property
+    def name(self):  # noqa: D102
+        return &#39;cfnade&#39;
+
+    def update(self, users=None, items=None, ratings=None):  # noqa: D102
+        super().update(users, items, ratings)
+        self._cf_nade_model.load_weights(&#39;model.h5&#39;)
+
+        ratings_matrix = self._ratings.toarray()
+        ratings_matrix = np.around(ratings_matrix.transpose())
+        ratings_matrix = ratings_matrix.astype(int)
+
+        train_set = utils.DataSet(ratings_matrix,
+                                  num_users=self._num_users,
+                                  num_items=self._num_items,
+                                  batch_size=self._batch_size,
+                                  rating_bucket=self._rating_bucket,
+                                  mode=0)
+        self._cf_nade_model.fit_generator(train_set.generate(),
+                                          steps_per_epoch=(self._num_items // self._batch_size),
+                                          epochs=self._train_epoch,
+                                          callbacks=[train_set], verbose=1)
+
+    def _predict(self, user_item):  # noqa: D102
+        ratings_matrix = self._ratings.toarray()
+        ratings_matrix = np.around(ratings_matrix.transpose())
+        ratings_matrix = ratings_matrix.astype(int)
+
+        # keep track of unseen items in ratings
+        ratings_matrix_total = ratings_matrix.transpose().sum(axis=1)
+        self._new_items = np.where(ratings_matrix_total == 0)[0]
+
+        test_set = utils.DataSet(ratings_matrix,
+                                 num_users=self._num_users,
+                                 num_items=self._num_items,
+                                 batch_size=self._batch_size,
+                                 rating_bucket=self._rating_bucket,
+                                 mode=2)
+        pred_rating = []
+        for batch in test_set.generate():
+            pred_matrix = self._cf_nade_model.predict(batch[0])[1]
+            pred_rating_batch = pred_matrix * self._rate_score[np.newaxis, np.newaxis, :]
+            pred_rating_batch = pred_rating_batch.sum(axis=2)
+            pred_rating.append(pred_rating_batch)
+        pred_rating = np.concatenate(pred_rating, axis=0)
+
+        predictions = []
+        for user, item, _ in user_item:
+            if item in self._new_items:
+                predictions.append(3)
+            else:
+                predictions.append(pred_rating[item, user])
+
+        return np.array(predictions)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="reclab.recommenders.cfnade.cfnade.Cfnade"><code class="flex name class">
+<span>class <span class="ident">Cfnade</span></span>
+<span>(</span><span>num_users, num_items, batch_size=64, train_epoch=10, rating_bucket=5, hidden_dim=500, learning_rate=0.001, normalized_layer=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A Neural Autoregressive Distribution Estimator (NADE) for collaborative filtering (CF) tasks.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>num_users</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of users in the environment.</dd>
+<dt><strong><code>num_items</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of items in the environment.</dd>
+<dt><strong><code>train_set</code></strong> :&ensp;<code>np.matrix</code></dt>
+<dd>Matrix of shape (num_users, num_items) populated with user ratings.</dd>
+<dt><strong><code>train_epoch</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of epochs to train for each call.</dd>
+<dt><strong><code>batch_size</code></strong> :&ensp;<code>int</code></dt>
+<dd>Batch size during initial training phase.</dd>
+<dt><strong><code>rating_bucket</code></strong> :&ensp;<code>int</code></dt>
+<dd>number of rating buckets</dd>
+<dt><strong><code>rate_score</code></strong> :&ensp;<code>array</code> of <code>float</code></dt>
+<dd>An array of corresponding rating score for each bucket</dd>
+<dt><strong><code>hidden_dim</code></strong> :&ensp;<code>int</code></dt>
+<dd>hidden dimension to construct the layer</dd>
+<dt><strong><code>learning_rate</code></strong> :&ensp;<code>float</code></dt>
+<dd>learning rate</dd>
+</dl>
+<p>Create new Cfnade recommender.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Cfnade(recommender.PredictRecommender):
+    &#34;&#34;&#34;
+    A Neural Autoregressive Distribution Estimator (NADE) for collaborative filtering (CF) tasks.
+
+    Parameters
+    ---------
+    num_users : int
+        Number of users in the environment.
+    num_items : int
+        Number of items in the environment.
+    train_set : np.matrix
+        Matrix of shape (num_users, num_items) populated with user ratings.
+    train_epoch : int
+        Number of epochs to train for each call.
+    batch_size : int
+        Batch size during initial training phase.
+    rating_bucket: int
+        number of rating buckets
+    rate_score: array of float
+        An array of corresponding rating score for each bucket
+    hidden_dim: int
+        hidden dimension to construct the layer
+    learning_rate: float
+        learning rate
+
+    &#34;&#34;&#34;
+
+    def __init__(
+            self, num_users, num_items,
+            batch_size=64, train_epoch=10,
+            rating_bucket=5, hidden_dim=500,
+            learning_rate=0.001, normalized_layer=False):
+        &#34;&#34;&#34;Create new Cfnade recommender.&#34;&#34;&#34;
+        super().__init__()
+        self._num_users = num_users
+        self._num_items = num_items
+        self._batch_size = batch_size
+        if num_items &lt;= batch_size:
+            self._batch_size = num_items
+        self._input_dim0 = num_users
+        self._rating_bucket = rating_bucket
+        self._rate_score = np.array(np.arange(1, rating_bucket+1), np.float32)
+        self._hidden_dim = hidden_dim
+        self._learning_rate = learning_rate
+        self._train_epoch = train_epoch
+        self._hyperparameters.update(locals())
+        self._new_items = np.zeros(num_items)
+
+        # We only want the function arguments so remove class related objects.
+        del self._hyperparameters[&#39;self&#39;]
+        del self._hyperparameters[&#39;__class__&#39;]
+
+        # Prepare model
+        input_layer = Input(shape=(self._input_dim0, self._rating_bucket), name=&#39;input_ratings&#39;)
+        output_ratings = Input(shape=(self._input_dim0, self._rating_bucket), name=&#39;output_ratings&#39;)
+        input_masks = Input(shape=(self._input_dim0,), name=&#39;input_masks&#39;)
+        output_masks = Input(shape=(self._input_dim0,), name=&#39;output_masks&#39;)
+        nade_layer = Dropout(0.0)(input_layer)
+        nade_layer = NADE(
+                        hidden_dim=self._hidden_dim, activation=&#39;tanh&#39;, bias=True,
+                        W_regularizer=keras.regularizers.l2(0.02),
+                        V_regularizer=keras.regularizers.l2(0.02),
+                        b_regularizer=keras.regularizers.l2(0.02),
+                        c_regularizer=keras.regularizers.l2(0.02),
+                        normalized_layer=normalized_layer)(nade_layer)
+
+        predicted_ratings = Lambda(
+            utils.prediction_layer,
+            output_shape=utils.prediction_output_shape,
+            name=&#39;predicted_ratings&#39;)(nade_layer)
+
+        func_d = Lambda(
+            utils.d_layer, output_shape=utils.d_output_shape,
+            name=&#39;func_d&#39;)(input_masks)
+        sum_masks = add([input_masks, output_masks])
+        func_d_2 = Lambda(
+            utils.D_layer, output_shape=utils.D_output_shape,
+            name=&#39;func_d_2&#39;)(sum_masks)
+        loss_out = Lambda(
+            utils.rating_cost_lambda_func, output_shape=(1, ),
+            name=&#39;nade_loss&#39;)([nade_layer, output_ratings,
+                               input_masks, output_masks, func_d_2, func_d])
+
+        self._cf_nade_model = Model(
+            inputs=[input_layer, output_ratings, input_masks, output_masks],
+            outputs=[loss_out, predicted_ratings])
+        optimizer = Adam(self._learning_rate, 0.9, 0.999, 1e-8)
+        self._cf_nade_model.compile(
+            loss={&#39;nade_loss&#39;: lambda y_true, y_pred: y_pred},
+            optimizer=optimizer)
+        self._cf_nade_model.save_weights(&#39;model.h5&#39;)
+
+    @property
+    def name(self):  # noqa: D102
+        return &#39;cfnade&#39;
+
+    def update(self, users=None, items=None, ratings=None):  # noqa: D102
+        super().update(users, items, ratings)
+        self._cf_nade_model.load_weights(&#39;model.h5&#39;)
+
+        ratings_matrix = self._ratings.toarray()
+        ratings_matrix = np.around(ratings_matrix.transpose())
+        ratings_matrix = ratings_matrix.astype(int)
+
+        train_set = utils.DataSet(ratings_matrix,
+                                  num_users=self._num_users,
+                                  num_items=self._num_items,
+                                  batch_size=self._batch_size,
+                                  rating_bucket=self._rating_bucket,
+                                  mode=0)
+        self._cf_nade_model.fit_generator(train_set.generate(),
+                                          steps_per_epoch=(self._num_items // self._batch_size),
+                                          epochs=self._train_epoch,
+                                          callbacks=[train_set], verbose=1)
+
+    def _predict(self, user_item):  # noqa: D102
+        ratings_matrix = self._ratings.toarray()
+        ratings_matrix = np.around(ratings_matrix.transpose())
+        ratings_matrix = ratings_matrix.astype(int)
+
+        # keep track of unseen items in ratings
+        ratings_matrix_total = ratings_matrix.transpose().sum(axis=1)
+        self._new_items = np.where(ratings_matrix_total == 0)[0]
+
+        test_set = utils.DataSet(ratings_matrix,
+                                 num_users=self._num_users,
+                                 num_items=self._num_items,
+                                 batch_size=self._batch_size,
+                                 rating_bucket=self._rating_bucket,
+                                 mode=2)
+        pred_rating = []
+        for batch in test_set.generate():
+            pred_matrix = self._cf_nade_model.predict(batch[0])[1]
+            pred_rating_batch = pred_matrix * self._rate_score[np.newaxis, np.newaxis, :]
+            pred_rating_batch = pred_rating_batch.sum(axis=2)
+            pred_rating.append(pred_rating_batch)
+        pred_rating = np.concatenate(pred_rating, axis=0)
+
+        predictions = []
+        for user, item, _ in user_item:
+            if item in self._new_items:
+                predictions.append(3)
+            else:
+                predictions.append(pred_rating[item, user])
+
+        return np.array(predictions)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="reclab.recommenders.recommender.PredictRecommender" href="../recommender.html#reclab.recommenders.recommender.PredictRecommender">PredictRecommender</a></li>
+<li><a title="reclab.recommenders.recommender.Recommender" href="../recommender.html#reclab.recommenders.recommender.Recommender">Recommender</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="reclab.recommenders.recommender.PredictRecommender" href="../recommender.html#reclab.recommenders.recommender.PredictRecommender">PredictRecommender</a></b></code>:
+<ul class="hlist">
+<li><code><a title="reclab.recommenders.recommender.PredictRecommender.dense_predictions" href="../recommender.html#reclab.recommenders.recommender.PredictRecommender.dense_predictions">dense_predictions</a></code></li>
+<li><code><a title="reclab.recommenders.recommender.PredictRecommender.hyperparameters" href="../recommender.html#reclab.recommenders.recommender.Recommender.hyperparameters">hyperparameters</a></code></li>
+<li><code><a title="reclab.recommenders.recommender.PredictRecommender.name" href="../recommender.html#reclab.recommenders.recommender.Recommender.name">name</a></code></li>
+<li><code><a title="reclab.recommenders.recommender.PredictRecommender.predict" href="../recommender.html#reclab.recommenders.recommender.PredictRecommender.predict">predict</a></code></li>
+<li><code><a title="reclab.recommenders.recommender.PredictRecommender.recommend" href="../recommender.html#reclab.recommenders.recommender.PredictRecommender.recommend">recommend</a></code></li>
+<li><code><a title="reclab.recommenders.recommender.PredictRecommender.reset" href="../recommender.html#reclab.recommenders.recommender.PredictRecommender.reset">reset</a></code></li>
+<li><code><a title="reclab.recommenders.recommender.PredictRecommender.update" href="../recommender.html#reclab.recommenders.recommender.PredictRecommender.update">update</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="reclab.recommenders.cfnade" href="index.html">reclab.recommenders.cfnade</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="reclab.recommenders.cfnade.cfnade.Cfnade" href="#reclab.recommenders.cfnade.cfnade.Cfnade">Cfnade</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.4</a>.</p>
+</footer>
+</body>
+</html>

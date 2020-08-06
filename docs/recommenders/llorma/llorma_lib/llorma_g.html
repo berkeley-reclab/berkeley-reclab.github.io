@@ -1,0 +1,1712 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.4" />
+<title>reclab.recommenders.llorma.llorma_lib.llorma_g API documentation</title>
+<meta name="description" content="The package for the Global LLORMA recommender.
+Code modified from https://github.com/JoonyoungYi/LLORMA-tensorflow" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>reclab.recommenders.llorma.llorma_lib.llorma_g</code></h1>
+</header>
+<section id="section-intro">
+<p>The package for the Global LLORMA recommender.
+Code modified from <a href="https://github.com/JoonyoungYi/LLORMA-tensorflow">https://github.com/JoonyoungYi/LLORMA-tensorflow</a></p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+The package for the Global LLORMA recommender.
+Code modified from https://github.com/JoonyoungYi/LLORMA-tensorflow
+&#34;&#34;&#34;
+import os
+import random
+import warnings
+
+import numpy as np
+import tensorflow as tf
+
+from .anchor import AnchorManager
+from .train_utils import get_train_op, init_latent_mat, init_session
+
+tf.compat.v1.disable_eager_execution()
+
+
+class Llorma():
+    &#34;&#34;&#34;Local Low Rank Matrix Approximation Model
+
+    Parameters
+    ----------
+    max_user : int
+        Maximum number of users in the environment
+    max_item  : int
+        Maximum number of items in the environment
+    n_anchor : int, optional
+        number of anchor-points, by default 10
+    pre_rank : int, optional
+        latent-dimension of the matrix-factorization model
+        used for pre-training, by default 5
+    pre_learning_rate : float, optional
+        learning rate used to fit the global pre-train model,
+        by default 2e-4
+    pre_lambda_val : float, optional
+        regularization parameter for pre-training,
+        by default 10
+    pre_train_steps : int, optional
+        number of gradient steps used for pretraining,
+        by default 100
+    rank : int, optional
+        latent-dimension of the local models, by default 10
+    learning_rate : float, optional
+        learning rate used to fit local models, by default 1e-2
+    lambda_val : float, optional
+        regularization parameter for the local models,
+        by default 1e-3
+    train_steps : int, optional
+        number of train epochs for fitting local models,
+        by default 1000
+    batch_size : int, optional
+        the batch size used when fitting local models,
+        by default 1024
+    use_cache : bool, optional
+        If True use old saved models of the pre-train step,
+        by default True
+    result_path : str, optional
+        directory name where model data will be saved,
+        by default &#39;results&#39;
+    kernel_fun : callable, optional
+        kernel function used for similarity,
+        by_default None
+    &#34;&#34;&#34;
+    def __init__(self, max_user, max_item, n_anchor=10, pre_rank=5,
+                 pre_learning_rate=2e-4, pre_lambda_val=10,
+                 pre_train_steps=100, rank=10, learning_rate=1e-2,
+                 lambda_val=1e-3, train_steps=1000, batch_size=1024,
+                 use_cache=True, result_path=&#39;results&#39;, kernel_fun=None):
+        &#34;&#34;&#34; Initialize a LLORMA recommender
+        &#34;&#34;&#34;
+        self.max_user = max_user
+        self.max_item = max_item
+        self.n_anchor = n_anchor
+        self.pre_rank = pre_rank
+        self.pre_learning_rate = pre_learning_rate
+        self.pre_lambda_val = pre_lambda_val
+        self.pre_train_steps = pre_train_steps
+        self.rank = rank
+        self.learning_rate = learning_rate
+        self.lambda_val = lambda_val
+        self.train_steps = train_steps
+        self.batch_size = batch_size
+        self.use_cache = use_cache
+        self.result_path = result_path
+        self.kernel_fun = kernel_fun
+        self.user_latent_init = None
+        self.item_latent_init = None
+        self.batch_manager = None
+        self.anchor_manager = None
+        self.session = None
+        self.model = None
+        self.pre_model = None
+        self.model = None
+
+    def reset_data(self, train_data, valid_data, test_data):
+        &#34;&#34;&#34; Reset the data of a recommender by instantiating a
+        new BatchManager or modifying the existing one
+
+        Parameters
+        ----------
+        train_data : Array-like, shape (N_train,3)
+            Training data, each row is of the form
+            (user_id, item_id, rating)
+        valid_data : Array-like, shape (N_valid, 3)
+            Validation data, each row is of the form
+            (user_id, item_id, rating)
+        test_data : Array-like, shape (N_test, 3)
+            Test data, each row is of the form
+            (user_id, item_idm rating)
+        &#34;&#34;&#34;
+
+        if not self.batch_manager:
+            self.batch_manager = BatchManager(train_data, valid_data, test_data)
+        else:
+            self.batch_manager.update(train_data, valid_data, test_data)
+
+        N_ratings = self.batch_manager.train_data.shape[0]
+        if N_ratings &lt; self.n_anchor:
+            warnings.warn(&#34;The data has fewer ratings than anchor points: {}&lt;{}&#34;.format(
+                          N_ratings, self.n_anchor))
+            self.n_anchor = N_ratings
+
+    def init_pre_model(self):
+        &#34;&#34;&#34; Initialize TF variables, loss, objective and
+        optimizer for the global pre-model
+        &#34;&#34;&#34;
+        u_var = tf.compat.v1.placeholder(tf.int64, [None], name=&#39;u&#39;)
+        i_var = tf.compat.v1.placeholder(tf.int64, [None], name=&#39;i&#39;)
+        r_var = tf.compat.v1.placeholder(tf.float64, [None], name=&#39;r&#39;)
+
+        p_factor = init_latent_mat(self.max_user,
+                                   self.pre_rank,
+                                   self.batch_manager.mu,
+                                   self.batch_manager.std)
+        q_factor = init_latent_mat(self.max_item,
+                                   self.pre_rank,
+                                   self.batch_manager.mu,
+                                   self.batch_manager.std)
+
+        p_lookup = tf.nn.embedding_lookup(p_factor, u_var)
+        q_lookup = tf.nn.embedding_lookup(q_factor, i_var)
+        r_hat = tf.reduce_sum(tf.multiply(p_lookup, q_lookup), 1)
+
+        reg_loss = tf.add_n([tf.reduce_sum(tf.square(p_factor)),
+                             tf.reduce_sum(tf.square(q_factor))])
+        loss = tf.reduce_sum(tf.square(r_var - r_hat)) + self.pre_lambda_val * reg_loss
+        rmse = tf.sqrt(tf.reduce_mean(tf.square(r_var - r_hat)))
+
+        optimizer = tf.compat.v1.train.MomentumOptimizer(self.pre_learning_rate, 0.9)
+        train_ops = [
+            optimizer.minimize(loss, var_list=[p_factor]),
+            optimizer.minimize(loss, var_list=[q_factor])
+        ]
+        return {
+            &#39;u&#39;: u_var,
+            &#39;i&#39;: i_var,
+            &#39;r&#39;: r_var,
+            &#39;train_ops&#39;: train_ops,
+            &#39;loss&#39;: loss,
+            &#39;rmse&#39;: rmse,
+            &#39;p&#39;: p_factor,
+            &#39;q&#39;: q_factor,
+        }
+
+    def init_model(self):
+        &#34;&#34;&#34; Initialize TF variables, loss, objective and
+        optimizer for the local models
+        &#34;&#34;&#34;
+        u_var = tf.compat.v1.placeholder(tf.int64, [None], name=&#39;u&#39;)
+        i_var = tf.compat.v1.placeholder(tf.int64, [None], name=&#39;i&#39;)
+        r_var = tf.compat.v1.placeholder(tf.float64, [None], name=&#39;r&#39;)
+        k_var = tf.compat.v1.placeholder(tf.float64, [None, self.n_anchor], name=&#39;k&#39;)
+        k_sum = tf.reduce_sum(k_var, axis=1)
+
+        # init weights
+        all_p_factors, all_q_factors, r_hats = [], [], []
+        for _ in range(self.n_anchor):
+            p_factor = init_latent_mat(self.max_user,
+                                       self.rank,
+                                       self.batch_manager.mu,
+                                       self.batch_manager.std)
+
+            q_factor = init_latent_mat(self.max_item,
+                                       self.rank,
+                                       self.batch_manager.mu,
+                                       self.batch_manager.std)
+            all_p_factors.append(p_factor)
+            all_q_factors.append(q_factor)
+
+            p_lookup = tf.nn.embedding_lookup(p_factor, u_var)
+            q_lookup = tf.nn.embedding_lookup(q_factor, i_var)
+            r_hat = tf.reduce_sum(tf.multiply(p_lookup, q_lookup), axis=1)
+            r_hats.append(r_hat)
+
+        r_hat = tf.reduce_sum(tf.multiply(k_var, tf.stack(r_hats, axis=1)), axis=1)
+        r_hat = tf.where(tf.greater(k_sum, 1e-2), r_hat, tf.ones_like(r_hat) * 3)
+        rmse = tf.sqrt(tf.reduce_mean(tf.square(r_var - r_hat)))
+
+        optimizer = tf.compat.v1.train.GradientDescentOptimizer(self.learning_rate)
+        loss = tf.reduce_sum(tf.square(r_hat - r_var)) + self.lambda_val * tf.reduce_sum(
+            [tf.reduce_sum(tf.square(p_or_q)) for p_or_q in all_p_factors + all_q_factors])
+        train_ops = [get_train_op(optimizer, loss, [p, q])
+                     for p, q in zip(all_p_factors, all_q_factors)]
+        return {
+            &#39;u&#39;: u_var,
+            &#39;i&#39;: i_var,
+            &#39;r&#39;: r_var,
+            &#39;k&#39;: k_var,
+            &#39;train_ops&#39;: train_ops,
+            &#39;rmse&#39;: rmse,
+            &#39;r_hat&#39;: r_hat,
+        }
+
+    def _get_rmse_pre_model(self, cur_session, pre_model):
+        &#34;&#34;&#34; Helper method to compute RMSE of the pre-model
+
+        Parameters
+        ----------
+        cur_session : obj: tf.session
+            TensorFlow session to use for computation
+        pre_model : Dict-like
+            Dictionary of TF variables, train operations
+            Typically the output of self.init_pre_model()
+
+        Returns
+        -------
+        (float, float)
+            The validation and test set RMSE
+        &#34;&#34;&#34;
+        valid_rmse = cur_session.run(
+            pre_model[&#39;rmse&#39;],
+            feed_dict={
+                pre_model[&#39;u&#39;]: self.batch_manager.valid_data[:, 0],
+                pre_model[&#39;i&#39;]: self.batch_manager.valid_data[:, 1],
+                pre_model[&#39;r&#39;]: self.batch_manager.valid_data[:, 2]
+            })
+
+        test_rmse = cur_session.run(
+            pre_model[&#39;rmse&#39;],
+            feed_dict={
+                pre_model[&#39;u&#39;]: self.batch_manager.test_data[:, 0],
+                pre_model[&#39;i&#39;]: self.batch_manager.test_data[:, 1],
+                pre_model[&#39;r&#39;]: self.batch_manager.test_data[:, 2]
+            })
+        return valid_rmse, test_rmse
+
+    def _get_rmse_model(self, cur_session, model, valid_k, test_k):
+        &#34;&#34;&#34; Compute the RMSE for the ensamble model of local models
+
+        Parameters
+        ----------
+        cur_session : obj: tf.session
+            TensorFlow session to use for computation
+        model : Dict-like
+            Dictionary of TF variables, train operations
+            Typically the output of self.init_model()
+        valid_k : Array-like, shape (N_valid,)
+            Kernel weight values for each user-item pair
+        test_k : Array-like, shape (N_test,)
+            Kernel weight values for each user-item pair
+
+        Returns
+        -------
+        (float, float)
+            The validation and test set RMSE
+        &#34;&#34;&#34;
+        valid_rmse = cur_session.run(
+            model[&#39;rmse&#39;],
+            feed_dict={
+                model[&#39;u&#39;]: self.batch_manager.valid_data[:, 0],
+                model[&#39;i&#39;]: self.batch_manager.valid_data[:, 1],
+                model[&#39;r&#39;]: self.batch_manager.valid_data[:, 2],
+                model[&#39;k&#39;]: valid_k,
+            })
+
+        test_rmse = cur_session.run(
+            model[&#39;rmse&#39;],
+            feed_dict={
+                model[&#39;u&#39;]: self.batch_manager.test_data[:, 0],
+                model[&#39;i&#39;]: self.batch_manager.test_data[:, 1],
+                model[&#39;r&#39;]: self.batch_manager.test_data[:, 2],
+                model[&#39;k&#39;]: test_k,
+            })
+
+        return valid_rmse, test_rmse
+
+    def pre_train(self):  # noqa: R0914
+        &#34;&#34;&#34;Pre-train a Matrix Factorization model for the full data
+        &#34;&#34;&#34;
+
+        # if self.use_cache:
+        #     # check if the pre-train factor are already initialized from a previous iteration
+        #     if (self.user_latent_init is not None) and (self.item_latent_init is not None):
+        #         return
+
+        # if self.pre_model is None:
+        #     self.pre_model = self.init_pre_model()
+
+        tf.compat.v1.reset_default_graph()
+        self.pre_model = self.init_pre_model()
+        pre_model = self.pre_model
+
+        pre_session = tf.compat.v1.Session()
+        pre_session.run(tf.compat.v1.global_variables_initializer())
+
+        min_valid_rmse = float(&#39;Inf&#39;)
+
+        random_model_idx = random.randint(0, 1000000)
+
+        file_path = &#39;{}/pre-model-{}.ckpt&#39;.format(self.result_path, random_model_idx)
+
+        train_data = self.batch_manager.train_data
+        u_vec = train_data[:, 0]
+        i_vec = train_data[:, 1]
+        r_vec = train_data[:, 2]
+
+        #saver = tf.train.Saver()
+        for itr in range(self.pre_train_steps):
+            for train_op in pre_model[&#39;train_ops&#39;]:
+                pre_session.run((train_op, pre_model[&#39;loss&#39;], pre_model[&#39;rmse&#39;]),
+                    feed_dict={pre_model[&#39;u&#39;]: u_vec,
+                               pre_model[&#39;i&#39;]: i_vec,
+                               pre_model[&#39;r&#39;]: r_vec})
+            if (itr+1)%10==0:
+                valid_rmse, _ = self._get_rmse_pre_model(pre_session, pre_model)
+                print(&#39;Pre-train step: {}, train_error:{}&#39;.format(itr+1, valid_rmse))
+                # if valid_rmse &lt;= min_valid_rmse:
+                #     min_valid_rmse = valid_rmse
+                #     min_valid_iter = itr
+                # #saver.save(pre_session, file_path)
+
+        #saver.restore(pre_session, file_path)
+        p_factor, q_factor = pre_session.run(
+            (pre_model[&#39;p&#39;], pre_model[&#39;q&#39;]),
+            feed_dict={
+                pre_model[&#39;u&#39;]: self.batch_manager.train_data[:, 0],
+                pre_model[&#39;i&#39;]: self.batch_manager.train_data[:, 1],
+                pre_model[&#39;r&#39;]: self.batch_manager.train_data[:, 2]
+            })
+        if not os.path.exists(self.result_path):
+            os.makedirs(self.result_path)
+
+        np.save(&#39;{}/pre_train_p.npy&#39;.format(self.result_path), p_factor)
+        np.save(&#39;{}/pre_train_q.npy&#39;.format(self.result_path), q_factor)
+
+        pre_session.close()
+
+        self.user_latent_init = p_factor
+        self.item_latent_init = q_factor
+
+    def train(self):  # noqa: R0914
+        &#34;&#34;&#34; Train the LLORMA recommender
+        &#34;&#34;&#34;
+
+        self.pre_train()
+        #tf.reset_default_graph()
+        self.model = self.init_model()
+        model = self.model
+
+
+
+        self.anchor_manager = AnchorManager(self.n_anchor,
+                                            self.batch_manager,
+                                            self.user_latent_init,
+                                            self.item_latent_init,
+                                            self.kernel_fun)
+        session = init_session()
+
+        local_models = [
+            LocalModel(session, model, anchor_idx, self.anchor_manager, self.batch_manager)
+            for anchor_idx in range(self.n_anchor)
+        ]
+
+        train_k = _get_local_k(local_models, kind=&#39;train&#39;)
+        valid_k = _get_local_k(local_models, kind=&#39;valid&#39;)
+        test_k = _get_local_k(local_models, kind=&#39;test&#39;)
+
+        min_valid_rmse = float(&#39;Inf&#39;)
+        min_valid_iter = 0
+
+        train_data = self.batch_manager.train_data
+
+        #saver = tf.train.Saver()
+        for itr in range(self.train_steps):
+            file_path = &#39;{}/model-{}.ckpt&#39;.format(self.result_path, itr)
+            for start_m in range(0, train_data.shape[0], self.batch_size):
+                end_m = min(start_m + self.batch_size, train_data.shape[0])
+                u_vec = train_data[start_m:end_m, 0]
+                i_vec = train_data[start_m:end_m, 1]
+                r_vec = train_data[start_m:end_m, 2]
+                k_vec = train_k[start_m:end_m, :]
+                results = session.run(
+                    [model[&#39;rmse&#39;]] + model[&#39;train_ops&#39;],
+                    feed_dict={
+                        model[&#39;u&#39;]: u_vec,
+                        model[&#39;i&#39;]: i_vec,
+                        model[&#39;r&#39;]: r_vec,
+                        model[&#39;k&#39;]: k_vec,
+                    })
+
+
+            if (itr+1)%10==0:
+                valid_rmse, test_rmse = self._get_rmse_model(session, model,
+                                                             valid_k, test_k)
+                print(&#34;Train step:{}, train error: {}, test error: {}&#34;.format(itr+1, test_rmse, valid_rmse))
+                # if valid_rmse &lt; min_valid_rmse:
+                #     min_valid_rmse = valid_rmse
+                #     min_valid_iter = itr
+                #     #saver.save(session, file_path)
+                #     #saver.restore(session, file_path)
+
+                # if itr &gt;= min_valid_iter + 100:
+                #     break
+
+
+
+        self.session = session
+        return(session, model)
+
+    def predict(self, user_items):
+        &#34;&#34;&#34;Given user-item pairs predict the rating
+
+        Parameters
+        ----------
+        user_items : Array-like, shape (N, 2)
+            Each row is an (user, item) pair
+
+        Returns
+        -------
+        np.ndarray, shape (N,)
+            Predicted ratings
+        &#34;&#34;&#34;
+
+        session = self.session
+        model = self.model
+
+        predict_k = np.stack(
+            [
+                self.anchor_manager.get_k(anchor_idx, user_items)
+                for anchor_idx in range(len(self.anchor_manager.anchor_idxs))
+            ],
+            axis=1)
+        predict_k = np.clip(predict_k, 0.0, 1.0)
+        predict_k = np.divide(predict_k, np.sum(predict_k, axis=1, keepdims=1))
+        predict_k[np.isnan(predict_k)] = 0
+
+        predict_r_hat = session.run(
+            model[&#39;r_hat&#39;],
+            feed_dict={
+                model[&#39;u&#39;]: user_items[:, 0],
+                model[&#39;i&#39;]: user_items[:, 1],
+                model[&#39;k&#39;]: predict_k
+            })
+        return predict_r_hat
+
+
+class LocalModel:  # noqa: R0903
+    &#34;&#34;&#34;LocalModel
+
+    Parameters
+    ----------
+    session : obj: tf.session
+        TF session
+    model : Dict-like
+        Dictionary of TF variables, train operations
+        Typically the output of self.init_pre_model()
+    anchor_idx : int
+        Id of the anchor point for the local model
+    anchor_manager : obj: AnchorManager
+    batch_manager : obj: BatchManager
+    &#34;&#34;&#34;
+    def __init__(self, session, model, anchor_idx, anchor_manager,
+                 batch_manager):
+        &#34;&#34;&#34; Instantiate a local model
+        &#34;&#34;&#34;
+        self.session = session
+        self.model = model
+        self.batch_manager = batch_manager
+        self.anchor_idx = anchor_idx
+        self.anchor_manager = anchor_manager
+
+        #print(&#39;&gt;&gt; update k in anchor_idx [{}].&#39;.format(anchor_idx))
+        self.train_k = anchor_manager.get_train_k(anchor_idx)
+        self.valid_k = anchor_manager.get_valid_k(anchor_idx)
+        self.test_k = anchor_manager.get_test_k(anchor_idx)
+
+
+def _get_local_k(local_models, kind=&#39;train&#39;):
+    &#34;&#34;&#34;Get kernel weights for the local models
+
+    Parameters
+    ----------
+    local_models : Array-like
+        A list of LocalModel objects
+    kind : str, optional
+        type of data to get kernel weights for,
+        possible values are: &#39;train&#39;, &#39;valid&#39;, &#39;test&#39;
+        by default &#39;train&#39;
+
+    Returns
+    -------
+    np.ndarray, shape (N_local_models, N_ratings)
+        Matrix of kernel weights for each local model
+        for each user-item pair in the train/valid/test data
+    &#34;&#34;&#34;
+    k = np.stack(
+        [
+            getattr(local_model, &#39;{}_k&#39;.format(kind))
+            for local_model in local_models
+        ],
+        axis=1)
+    k = np.clip(k, 0.0, 1.0)
+    k = np.divide(k, np.sum(k, axis=1, keepdims=1))
+    k[np.isnan(k)] = 0
+    return k
+
+
+class BatchManager:  # noqa: R0903
+    &#34;&#34;&#34;BatchManager Class to manage the train-valid-test datasets
+
+    Parameters
+    ----------
+    train_data : Array-like, shape [N_train, 3]
+        Each row is of the form (user_id, item_id, rating)
+    valid_data : Array-like, shape [N_valid, 3]
+        Each row is of the form (user_id, item_id, rating)
+    test_data : Array-like, shape [N_test, 3]
+        Each row is of the form (user_id, item_id, rating)
+    &#34;&#34;&#34;
+    def __init__(self, train_data, valid_data, test_data):
+        &#34;&#34;&#34;Instantiate a BatchManager
+        &#34;&#34;&#34;
+        self.train_data = train_data
+        self.valid_data = valid_data
+        self.test_data = test_data
+        self._set_params()
+
+    def _set_params(self):
+        &#34;&#34;&#34;Private method to set the number of users, number of items,
+            mean and standard deviation attributes
+        &#34;&#34;&#34;
+        self.n_user = int(
+            max(
+                np.max(self.train_data[:, 0]),
+                np.max(self.valid_data[:, 0]), np.max(self.test_data[:,
+                                                                     0]))) + 1
+        self.n_item = int(
+            max(
+                np.max(self.train_data[:, 1]),
+                np.max(self.valid_data[:, 1]), np.max(self.test_data[:,
+                                                                     1]))) + 1
+        self.mu = np.mean(self.train_data[:, 2])
+        self.std = np.std(self.train_data[:, 2])
+
+    def update(self, train_data, valid_data=None, test_data=None):
+        &#34;&#34;&#34; Update the data
+
+        Parameters
+        ----------
+        train_data : Array-like, shape [N_train, 3]
+            Each row is of the form (user_id, item_id, rating)
+        valid_data : [Array-like, shape [N_valid, 3], optional
+            Each row is of the form (user_id, item_id, rating),
+            by default None
+        test_data : Array-like, shape [N_test, 3], optional
+            Each row is of the form (user_id, item_id, rating)
+            by default None
+        &#34;&#34;&#34;
+        self.train_data = train_data
+        if valid_data is not None:
+            self.valid_data = valid_data
+        if test_data is not None:
+            self.test_data = test_data
+        self._set_params()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="reclab.recommenders.llorma.llorma_lib.llorma_g.BatchManager"><code class="flex name class">
+<span>class <span class="ident">BatchManager</span></span>
+<span>(</span><span>train_data, valid_data, test_data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>BatchManager Class to manage the train-valid-test datasets</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>train_data</code></strong> :&ensp;<code>Array-like, shape [N_train, 3]</code></dt>
+<dd>Each row is of the form (user_id, item_id, rating)</dd>
+<dt><strong><code>valid_data</code></strong> :&ensp;<code>Array-like, shape [N_valid, 3]</code></dt>
+<dd>Each row is of the form (user_id, item_id, rating)</dd>
+<dt><strong><code>test_data</code></strong> :&ensp;<code>Array-like, shape [N_test, 3]</code></dt>
+<dd>Each row is of the form (user_id, item_id, rating)</dd>
+</dl>
+<p>Instantiate a BatchManager</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class BatchManager:  # noqa: R0903
+    &#34;&#34;&#34;BatchManager Class to manage the train-valid-test datasets
+
+    Parameters
+    ----------
+    train_data : Array-like, shape [N_train, 3]
+        Each row is of the form (user_id, item_id, rating)
+    valid_data : Array-like, shape [N_valid, 3]
+        Each row is of the form (user_id, item_id, rating)
+    test_data : Array-like, shape [N_test, 3]
+        Each row is of the form (user_id, item_id, rating)
+    &#34;&#34;&#34;
+    def __init__(self, train_data, valid_data, test_data):
+        &#34;&#34;&#34;Instantiate a BatchManager
+        &#34;&#34;&#34;
+        self.train_data = train_data
+        self.valid_data = valid_data
+        self.test_data = test_data
+        self._set_params()
+
+    def _set_params(self):
+        &#34;&#34;&#34;Private method to set the number of users, number of items,
+            mean and standard deviation attributes
+        &#34;&#34;&#34;
+        self.n_user = int(
+            max(
+                np.max(self.train_data[:, 0]),
+                np.max(self.valid_data[:, 0]), np.max(self.test_data[:,
+                                                                     0]))) + 1
+        self.n_item = int(
+            max(
+                np.max(self.train_data[:, 1]),
+                np.max(self.valid_data[:, 1]), np.max(self.test_data[:,
+                                                                     1]))) + 1
+        self.mu = np.mean(self.train_data[:, 2])
+        self.std = np.std(self.train_data[:, 2])
+
+    def update(self, train_data, valid_data=None, test_data=None):
+        &#34;&#34;&#34; Update the data
+
+        Parameters
+        ----------
+        train_data : Array-like, shape [N_train, 3]
+            Each row is of the form (user_id, item_id, rating)
+        valid_data : [Array-like, shape [N_valid, 3], optional
+            Each row is of the form (user_id, item_id, rating),
+            by default None
+        test_data : Array-like, shape [N_test, 3], optional
+            Each row is of the form (user_id, item_id, rating)
+            by default None
+        &#34;&#34;&#34;
+        self.train_data = train_data
+        if valid_data is not None:
+            self.valid_data = valid_data
+        if test_data is not None:
+            self.test_data = test_data
+        self._set_params()</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="reclab.recommenders.llorma.llorma_lib.llorma_g.BatchManager.update"><code class="name flex">
+<span>def <span class="ident">update</span></span>(<span>self, train_data, valid_data=None, test_data=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Update the data</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>train_data</code></strong> :&ensp;<code>Array-like, shape [N_train, 3]</code></dt>
+<dd>Each row is of the form (user_id, item_id, rating)</dd>
+<dt><strong><code>valid_data</code></strong> :&ensp;<code>[Array-like, shape [N_valid, 3]</code>, optional</dt>
+<dd>Each row is of the form (user_id, item_id, rating),
+by default None</dd>
+<dt><strong><code>test_data</code></strong> :&ensp;<code>Array-like, shape [N_test, 3]</code>, optional</dt>
+<dd>Each row is of the form (user_id, item_id, rating)
+by default None</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update(self, train_data, valid_data=None, test_data=None):
+    &#34;&#34;&#34; Update the data
+
+    Parameters
+    ----------
+    train_data : Array-like, shape [N_train, 3]
+        Each row is of the form (user_id, item_id, rating)
+    valid_data : [Array-like, shape [N_valid, 3], optional
+        Each row is of the form (user_id, item_id, rating),
+        by default None
+    test_data : Array-like, shape [N_test, 3], optional
+        Each row is of the form (user_id, item_id, rating)
+        by default None
+    &#34;&#34;&#34;
+    self.train_data = train_data
+    if valid_data is not None:
+        self.valid_data = valid_data
+    if test_data is not None:
+        self.test_data = test_data
+    self._set_params()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="reclab.recommenders.llorma.llorma_lib.llorma_g.Llorma"><code class="flex name class">
+<span>class <span class="ident">Llorma</span></span>
+<span>(</span><span>max_user, max_item, n_anchor=10, pre_rank=5, pre_learning_rate=0.0002, pre_lambda_val=10, pre_train_steps=100, rank=10, learning_rate=0.01, lambda_val=0.001, train_steps=1000, batch_size=1024, use_cache=True, result_path='results', kernel_fun=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Local Low Rank Matrix Approximation Model</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>max_user</code></strong> :&ensp;<code>int</code></dt>
+<dd>Maximum number of users in the environment</dd>
+<dt>max_item
+: int</dt>
+<dt>Maximum number of items in the environment</dt>
+<dt><strong><code>n_anchor</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>number of anchor-points, by default 10</dd>
+<dt><strong><code>pre_rank</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>latent-dimension of the matrix-factorization model
+used for pre-training, by default 5</dd>
+<dt><strong><code>pre_learning_rate</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>learning rate used to fit the global pre-train model,
+by default 2e-4</dd>
+<dt><strong><code>pre_lambda_val</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>regularization parameter for pre-training,
+by default 10</dd>
+<dt><strong><code>pre_train_steps</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>number of gradient steps used for pretraining,
+by default 100</dd>
+<dt><strong><code>rank</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>latent-dimension of the local models, by default 10</dd>
+<dt><strong><code>learning_rate</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>learning rate used to fit local models, by default 1e-2</dd>
+<dt><strong><code>lambda_val</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>regularization parameter for the local models,
+by default 1e-3</dd>
+<dt><strong><code>train_steps</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>number of train epochs for fitting local models,
+by default 1000</dd>
+<dt><strong><code>batch_size</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>the batch size used when fitting local models,
+by default 1024</dd>
+<dt><strong><code>use_cache</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>If True use old saved models of the pre-train step,
+by default True</dd>
+<dt><strong><code>result_path</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>directory name where model data will be saved,
+by default 'results'</dd>
+<dt><strong><code>kernel_fun</code></strong> :&ensp;<code>callable</code>, optional</dt>
+<dd>kernel function used for similarity,
+by_default None</dd>
+</dl>
+<p>Initialize a LLORMA recommender</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Llorma():
+    &#34;&#34;&#34;Local Low Rank Matrix Approximation Model
+
+    Parameters
+    ----------
+    max_user : int
+        Maximum number of users in the environment
+    max_item  : int
+        Maximum number of items in the environment
+    n_anchor : int, optional
+        number of anchor-points, by default 10
+    pre_rank : int, optional
+        latent-dimension of the matrix-factorization model
+        used for pre-training, by default 5
+    pre_learning_rate : float, optional
+        learning rate used to fit the global pre-train model,
+        by default 2e-4
+    pre_lambda_val : float, optional
+        regularization parameter for pre-training,
+        by default 10
+    pre_train_steps : int, optional
+        number of gradient steps used for pretraining,
+        by default 100
+    rank : int, optional
+        latent-dimension of the local models, by default 10
+    learning_rate : float, optional
+        learning rate used to fit local models, by default 1e-2
+    lambda_val : float, optional
+        regularization parameter for the local models,
+        by default 1e-3
+    train_steps : int, optional
+        number of train epochs for fitting local models,
+        by default 1000
+    batch_size : int, optional
+        the batch size used when fitting local models,
+        by default 1024
+    use_cache : bool, optional
+        If True use old saved models of the pre-train step,
+        by default True
+    result_path : str, optional
+        directory name where model data will be saved,
+        by default &#39;results&#39;
+    kernel_fun : callable, optional
+        kernel function used for similarity,
+        by_default None
+    &#34;&#34;&#34;
+    def __init__(self, max_user, max_item, n_anchor=10, pre_rank=5,
+                 pre_learning_rate=2e-4, pre_lambda_val=10,
+                 pre_train_steps=100, rank=10, learning_rate=1e-2,
+                 lambda_val=1e-3, train_steps=1000, batch_size=1024,
+                 use_cache=True, result_path=&#39;results&#39;, kernel_fun=None):
+        &#34;&#34;&#34; Initialize a LLORMA recommender
+        &#34;&#34;&#34;
+        self.max_user = max_user
+        self.max_item = max_item
+        self.n_anchor = n_anchor
+        self.pre_rank = pre_rank
+        self.pre_learning_rate = pre_learning_rate
+        self.pre_lambda_val = pre_lambda_val
+        self.pre_train_steps = pre_train_steps
+        self.rank = rank
+        self.learning_rate = learning_rate
+        self.lambda_val = lambda_val
+        self.train_steps = train_steps
+        self.batch_size = batch_size
+        self.use_cache = use_cache
+        self.result_path = result_path
+        self.kernel_fun = kernel_fun
+        self.user_latent_init = None
+        self.item_latent_init = None
+        self.batch_manager = None
+        self.anchor_manager = None
+        self.session = None
+        self.model = None
+        self.pre_model = None
+        self.model = None
+
+    def reset_data(self, train_data, valid_data, test_data):
+        &#34;&#34;&#34; Reset the data of a recommender by instantiating a
+        new BatchManager or modifying the existing one
+
+        Parameters
+        ----------
+        train_data : Array-like, shape (N_train,3)
+            Training data, each row is of the form
+            (user_id, item_id, rating)
+        valid_data : Array-like, shape (N_valid, 3)
+            Validation data, each row is of the form
+            (user_id, item_id, rating)
+        test_data : Array-like, shape (N_test, 3)
+            Test data, each row is of the form
+            (user_id, item_idm rating)
+        &#34;&#34;&#34;
+
+        if not self.batch_manager:
+            self.batch_manager = BatchManager(train_data, valid_data, test_data)
+        else:
+            self.batch_manager.update(train_data, valid_data, test_data)
+
+        N_ratings = self.batch_manager.train_data.shape[0]
+        if N_ratings &lt; self.n_anchor:
+            warnings.warn(&#34;The data has fewer ratings than anchor points: {}&lt;{}&#34;.format(
+                          N_ratings, self.n_anchor))
+            self.n_anchor = N_ratings
+
+    def init_pre_model(self):
+        &#34;&#34;&#34; Initialize TF variables, loss, objective and
+        optimizer for the global pre-model
+        &#34;&#34;&#34;
+        u_var = tf.compat.v1.placeholder(tf.int64, [None], name=&#39;u&#39;)
+        i_var = tf.compat.v1.placeholder(tf.int64, [None], name=&#39;i&#39;)
+        r_var = tf.compat.v1.placeholder(tf.float64, [None], name=&#39;r&#39;)
+
+        p_factor = init_latent_mat(self.max_user,
+                                   self.pre_rank,
+                                   self.batch_manager.mu,
+                                   self.batch_manager.std)
+        q_factor = init_latent_mat(self.max_item,
+                                   self.pre_rank,
+                                   self.batch_manager.mu,
+                                   self.batch_manager.std)
+
+        p_lookup = tf.nn.embedding_lookup(p_factor, u_var)
+        q_lookup = tf.nn.embedding_lookup(q_factor, i_var)
+        r_hat = tf.reduce_sum(tf.multiply(p_lookup, q_lookup), 1)
+
+        reg_loss = tf.add_n([tf.reduce_sum(tf.square(p_factor)),
+                             tf.reduce_sum(tf.square(q_factor))])
+        loss = tf.reduce_sum(tf.square(r_var - r_hat)) + self.pre_lambda_val * reg_loss
+        rmse = tf.sqrt(tf.reduce_mean(tf.square(r_var - r_hat)))
+
+        optimizer = tf.compat.v1.train.MomentumOptimizer(self.pre_learning_rate, 0.9)
+        train_ops = [
+            optimizer.minimize(loss, var_list=[p_factor]),
+            optimizer.minimize(loss, var_list=[q_factor])
+        ]
+        return {
+            &#39;u&#39;: u_var,
+            &#39;i&#39;: i_var,
+            &#39;r&#39;: r_var,
+            &#39;train_ops&#39;: train_ops,
+            &#39;loss&#39;: loss,
+            &#39;rmse&#39;: rmse,
+            &#39;p&#39;: p_factor,
+            &#39;q&#39;: q_factor,
+        }
+
+    def init_model(self):
+        &#34;&#34;&#34; Initialize TF variables, loss, objective and
+        optimizer for the local models
+        &#34;&#34;&#34;
+        u_var = tf.compat.v1.placeholder(tf.int64, [None], name=&#39;u&#39;)
+        i_var = tf.compat.v1.placeholder(tf.int64, [None], name=&#39;i&#39;)
+        r_var = tf.compat.v1.placeholder(tf.float64, [None], name=&#39;r&#39;)
+        k_var = tf.compat.v1.placeholder(tf.float64, [None, self.n_anchor], name=&#39;k&#39;)
+        k_sum = tf.reduce_sum(k_var, axis=1)
+
+        # init weights
+        all_p_factors, all_q_factors, r_hats = [], [], []
+        for _ in range(self.n_anchor):
+            p_factor = init_latent_mat(self.max_user,
+                                       self.rank,
+                                       self.batch_manager.mu,
+                                       self.batch_manager.std)
+
+            q_factor = init_latent_mat(self.max_item,
+                                       self.rank,
+                                       self.batch_manager.mu,
+                                       self.batch_manager.std)
+            all_p_factors.append(p_factor)
+            all_q_factors.append(q_factor)
+
+            p_lookup = tf.nn.embedding_lookup(p_factor, u_var)
+            q_lookup = tf.nn.embedding_lookup(q_factor, i_var)
+            r_hat = tf.reduce_sum(tf.multiply(p_lookup, q_lookup), axis=1)
+            r_hats.append(r_hat)
+
+        r_hat = tf.reduce_sum(tf.multiply(k_var, tf.stack(r_hats, axis=1)), axis=1)
+        r_hat = tf.where(tf.greater(k_sum, 1e-2), r_hat, tf.ones_like(r_hat) * 3)
+        rmse = tf.sqrt(tf.reduce_mean(tf.square(r_var - r_hat)))
+
+        optimizer = tf.compat.v1.train.GradientDescentOptimizer(self.learning_rate)
+        loss = tf.reduce_sum(tf.square(r_hat - r_var)) + self.lambda_val * tf.reduce_sum(
+            [tf.reduce_sum(tf.square(p_or_q)) for p_or_q in all_p_factors + all_q_factors])
+        train_ops = [get_train_op(optimizer, loss, [p, q])
+                     for p, q in zip(all_p_factors, all_q_factors)]
+        return {
+            &#39;u&#39;: u_var,
+            &#39;i&#39;: i_var,
+            &#39;r&#39;: r_var,
+            &#39;k&#39;: k_var,
+            &#39;train_ops&#39;: train_ops,
+            &#39;rmse&#39;: rmse,
+            &#39;r_hat&#39;: r_hat,
+        }
+
+    def _get_rmse_pre_model(self, cur_session, pre_model):
+        &#34;&#34;&#34; Helper method to compute RMSE of the pre-model
+
+        Parameters
+        ----------
+        cur_session : obj: tf.session
+            TensorFlow session to use for computation
+        pre_model : Dict-like
+            Dictionary of TF variables, train operations
+            Typically the output of self.init_pre_model()
+
+        Returns
+        -------
+        (float, float)
+            The validation and test set RMSE
+        &#34;&#34;&#34;
+        valid_rmse = cur_session.run(
+            pre_model[&#39;rmse&#39;],
+            feed_dict={
+                pre_model[&#39;u&#39;]: self.batch_manager.valid_data[:, 0],
+                pre_model[&#39;i&#39;]: self.batch_manager.valid_data[:, 1],
+                pre_model[&#39;r&#39;]: self.batch_manager.valid_data[:, 2]
+            })
+
+        test_rmse = cur_session.run(
+            pre_model[&#39;rmse&#39;],
+            feed_dict={
+                pre_model[&#39;u&#39;]: self.batch_manager.test_data[:, 0],
+                pre_model[&#39;i&#39;]: self.batch_manager.test_data[:, 1],
+                pre_model[&#39;r&#39;]: self.batch_manager.test_data[:, 2]
+            })
+        return valid_rmse, test_rmse
+
+    def _get_rmse_model(self, cur_session, model, valid_k, test_k):
+        &#34;&#34;&#34; Compute the RMSE for the ensamble model of local models
+
+        Parameters
+        ----------
+        cur_session : obj: tf.session
+            TensorFlow session to use for computation
+        model : Dict-like
+            Dictionary of TF variables, train operations
+            Typically the output of self.init_model()
+        valid_k : Array-like, shape (N_valid,)
+            Kernel weight values for each user-item pair
+        test_k : Array-like, shape (N_test,)
+            Kernel weight values for each user-item pair
+
+        Returns
+        -------
+        (float, float)
+            The validation and test set RMSE
+        &#34;&#34;&#34;
+        valid_rmse = cur_session.run(
+            model[&#39;rmse&#39;],
+            feed_dict={
+                model[&#39;u&#39;]: self.batch_manager.valid_data[:, 0],
+                model[&#39;i&#39;]: self.batch_manager.valid_data[:, 1],
+                model[&#39;r&#39;]: self.batch_manager.valid_data[:, 2],
+                model[&#39;k&#39;]: valid_k,
+            })
+
+        test_rmse = cur_session.run(
+            model[&#39;rmse&#39;],
+            feed_dict={
+                model[&#39;u&#39;]: self.batch_manager.test_data[:, 0],
+                model[&#39;i&#39;]: self.batch_manager.test_data[:, 1],
+                model[&#39;r&#39;]: self.batch_manager.test_data[:, 2],
+                model[&#39;k&#39;]: test_k,
+            })
+
+        return valid_rmse, test_rmse
+
+    def pre_train(self):  # noqa: R0914
+        &#34;&#34;&#34;Pre-train a Matrix Factorization model for the full data
+        &#34;&#34;&#34;
+
+        # if self.use_cache:
+        #     # check if the pre-train factor are already initialized from a previous iteration
+        #     if (self.user_latent_init is not None) and (self.item_latent_init is not None):
+        #         return
+
+        # if self.pre_model is None:
+        #     self.pre_model = self.init_pre_model()
+
+        tf.compat.v1.reset_default_graph()
+        self.pre_model = self.init_pre_model()
+        pre_model = self.pre_model
+
+        pre_session = tf.compat.v1.Session()
+        pre_session.run(tf.compat.v1.global_variables_initializer())
+
+        min_valid_rmse = float(&#39;Inf&#39;)
+
+        random_model_idx = random.randint(0, 1000000)
+
+        file_path = &#39;{}/pre-model-{}.ckpt&#39;.format(self.result_path, random_model_idx)
+
+        train_data = self.batch_manager.train_data
+        u_vec = train_data[:, 0]
+        i_vec = train_data[:, 1]
+        r_vec = train_data[:, 2]
+
+        #saver = tf.train.Saver()
+        for itr in range(self.pre_train_steps):
+            for train_op in pre_model[&#39;train_ops&#39;]:
+                pre_session.run((train_op, pre_model[&#39;loss&#39;], pre_model[&#39;rmse&#39;]),
+                    feed_dict={pre_model[&#39;u&#39;]: u_vec,
+                               pre_model[&#39;i&#39;]: i_vec,
+                               pre_model[&#39;r&#39;]: r_vec})
+            if (itr+1)%10==0:
+                valid_rmse, _ = self._get_rmse_pre_model(pre_session, pre_model)
+                print(&#39;Pre-train step: {}, train_error:{}&#39;.format(itr+1, valid_rmse))
+                # if valid_rmse &lt;= min_valid_rmse:
+                #     min_valid_rmse = valid_rmse
+                #     min_valid_iter = itr
+                # #saver.save(pre_session, file_path)
+
+        #saver.restore(pre_session, file_path)
+        p_factor, q_factor = pre_session.run(
+            (pre_model[&#39;p&#39;], pre_model[&#39;q&#39;]),
+            feed_dict={
+                pre_model[&#39;u&#39;]: self.batch_manager.train_data[:, 0],
+                pre_model[&#39;i&#39;]: self.batch_manager.train_data[:, 1],
+                pre_model[&#39;r&#39;]: self.batch_manager.train_data[:, 2]
+            })
+        if not os.path.exists(self.result_path):
+            os.makedirs(self.result_path)
+
+        np.save(&#39;{}/pre_train_p.npy&#39;.format(self.result_path), p_factor)
+        np.save(&#39;{}/pre_train_q.npy&#39;.format(self.result_path), q_factor)
+
+        pre_session.close()
+
+        self.user_latent_init = p_factor
+        self.item_latent_init = q_factor
+
+    def train(self):  # noqa: R0914
+        &#34;&#34;&#34; Train the LLORMA recommender
+        &#34;&#34;&#34;
+
+        self.pre_train()
+        #tf.reset_default_graph()
+        self.model = self.init_model()
+        model = self.model
+
+
+
+        self.anchor_manager = AnchorManager(self.n_anchor,
+                                            self.batch_manager,
+                                            self.user_latent_init,
+                                            self.item_latent_init,
+                                            self.kernel_fun)
+        session = init_session()
+
+        local_models = [
+            LocalModel(session, model, anchor_idx, self.anchor_manager, self.batch_manager)
+            for anchor_idx in range(self.n_anchor)
+        ]
+
+        train_k = _get_local_k(local_models, kind=&#39;train&#39;)
+        valid_k = _get_local_k(local_models, kind=&#39;valid&#39;)
+        test_k = _get_local_k(local_models, kind=&#39;test&#39;)
+
+        min_valid_rmse = float(&#39;Inf&#39;)
+        min_valid_iter = 0
+
+        train_data = self.batch_manager.train_data
+
+        #saver = tf.train.Saver()
+        for itr in range(self.train_steps):
+            file_path = &#39;{}/model-{}.ckpt&#39;.format(self.result_path, itr)
+            for start_m in range(0, train_data.shape[0], self.batch_size):
+                end_m = min(start_m + self.batch_size, train_data.shape[0])
+                u_vec = train_data[start_m:end_m, 0]
+                i_vec = train_data[start_m:end_m, 1]
+                r_vec = train_data[start_m:end_m, 2]
+                k_vec = train_k[start_m:end_m, :]
+                results = session.run(
+                    [model[&#39;rmse&#39;]] + model[&#39;train_ops&#39;],
+                    feed_dict={
+                        model[&#39;u&#39;]: u_vec,
+                        model[&#39;i&#39;]: i_vec,
+                        model[&#39;r&#39;]: r_vec,
+                        model[&#39;k&#39;]: k_vec,
+                    })
+
+
+            if (itr+1)%10==0:
+                valid_rmse, test_rmse = self._get_rmse_model(session, model,
+                                                             valid_k, test_k)
+                print(&#34;Train step:{}, train error: {}, test error: {}&#34;.format(itr+1, test_rmse, valid_rmse))
+                # if valid_rmse &lt; min_valid_rmse:
+                #     min_valid_rmse = valid_rmse
+                #     min_valid_iter = itr
+                #     #saver.save(session, file_path)
+                #     #saver.restore(session, file_path)
+
+                # if itr &gt;= min_valid_iter + 100:
+                #     break
+
+
+
+        self.session = session
+        return(session, model)
+
+    def predict(self, user_items):
+        &#34;&#34;&#34;Given user-item pairs predict the rating
+
+        Parameters
+        ----------
+        user_items : Array-like, shape (N, 2)
+            Each row is an (user, item) pair
+
+        Returns
+        -------
+        np.ndarray, shape (N,)
+            Predicted ratings
+        &#34;&#34;&#34;
+
+        session = self.session
+        model = self.model
+
+        predict_k = np.stack(
+            [
+                self.anchor_manager.get_k(anchor_idx, user_items)
+                for anchor_idx in range(len(self.anchor_manager.anchor_idxs))
+            ],
+            axis=1)
+        predict_k = np.clip(predict_k, 0.0, 1.0)
+        predict_k = np.divide(predict_k, np.sum(predict_k, axis=1, keepdims=1))
+        predict_k[np.isnan(predict_k)] = 0
+
+        predict_r_hat = session.run(
+            model[&#39;r_hat&#39;],
+            feed_dict={
+                model[&#39;u&#39;]: user_items[:, 0],
+                model[&#39;i&#39;]: user_items[:, 1],
+                model[&#39;k&#39;]: predict_k
+            })
+        return predict_r_hat</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="reclab.recommenders.llorma.llorma_lib.llorma_g.Llorma.init_model"><code class="name flex">
+<span>def <span class="ident">init_model</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Initialize TF variables, loss, objective and
+optimizer for the local models</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def init_model(self):
+    &#34;&#34;&#34; Initialize TF variables, loss, objective and
+    optimizer for the local models
+    &#34;&#34;&#34;
+    u_var = tf.compat.v1.placeholder(tf.int64, [None], name=&#39;u&#39;)
+    i_var = tf.compat.v1.placeholder(tf.int64, [None], name=&#39;i&#39;)
+    r_var = tf.compat.v1.placeholder(tf.float64, [None], name=&#39;r&#39;)
+    k_var = tf.compat.v1.placeholder(tf.float64, [None, self.n_anchor], name=&#39;k&#39;)
+    k_sum = tf.reduce_sum(k_var, axis=1)
+
+    # init weights
+    all_p_factors, all_q_factors, r_hats = [], [], []
+    for _ in range(self.n_anchor):
+        p_factor = init_latent_mat(self.max_user,
+                                   self.rank,
+                                   self.batch_manager.mu,
+                                   self.batch_manager.std)
+
+        q_factor = init_latent_mat(self.max_item,
+                                   self.rank,
+                                   self.batch_manager.mu,
+                                   self.batch_manager.std)
+        all_p_factors.append(p_factor)
+        all_q_factors.append(q_factor)
+
+        p_lookup = tf.nn.embedding_lookup(p_factor, u_var)
+        q_lookup = tf.nn.embedding_lookup(q_factor, i_var)
+        r_hat = tf.reduce_sum(tf.multiply(p_lookup, q_lookup), axis=1)
+        r_hats.append(r_hat)
+
+    r_hat = tf.reduce_sum(tf.multiply(k_var, tf.stack(r_hats, axis=1)), axis=1)
+    r_hat = tf.where(tf.greater(k_sum, 1e-2), r_hat, tf.ones_like(r_hat) * 3)
+    rmse = tf.sqrt(tf.reduce_mean(tf.square(r_var - r_hat)))
+
+    optimizer = tf.compat.v1.train.GradientDescentOptimizer(self.learning_rate)
+    loss = tf.reduce_sum(tf.square(r_hat - r_var)) + self.lambda_val * tf.reduce_sum(
+        [tf.reduce_sum(tf.square(p_or_q)) for p_or_q in all_p_factors + all_q_factors])
+    train_ops = [get_train_op(optimizer, loss, [p, q])
+                 for p, q in zip(all_p_factors, all_q_factors)]
+    return {
+        &#39;u&#39;: u_var,
+        &#39;i&#39;: i_var,
+        &#39;r&#39;: r_var,
+        &#39;k&#39;: k_var,
+        &#39;train_ops&#39;: train_ops,
+        &#39;rmse&#39;: rmse,
+        &#39;r_hat&#39;: r_hat,
+    }</code></pre>
+</details>
+</dd>
+<dt id="reclab.recommenders.llorma.llorma_lib.llorma_g.Llorma.init_pre_model"><code class="name flex">
+<span>def <span class="ident">init_pre_model</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Initialize TF variables, loss, objective and
+optimizer for the global pre-model</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def init_pre_model(self):
+    &#34;&#34;&#34; Initialize TF variables, loss, objective and
+    optimizer for the global pre-model
+    &#34;&#34;&#34;
+    u_var = tf.compat.v1.placeholder(tf.int64, [None], name=&#39;u&#39;)
+    i_var = tf.compat.v1.placeholder(tf.int64, [None], name=&#39;i&#39;)
+    r_var = tf.compat.v1.placeholder(tf.float64, [None], name=&#39;r&#39;)
+
+    p_factor = init_latent_mat(self.max_user,
+                               self.pre_rank,
+                               self.batch_manager.mu,
+                               self.batch_manager.std)
+    q_factor = init_latent_mat(self.max_item,
+                               self.pre_rank,
+                               self.batch_manager.mu,
+                               self.batch_manager.std)
+
+    p_lookup = tf.nn.embedding_lookup(p_factor, u_var)
+    q_lookup = tf.nn.embedding_lookup(q_factor, i_var)
+    r_hat = tf.reduce_sum(tf.multiply(p_lookup, q_lookup), 1)
+
+    reg_loss = tf.add_n([tf.reduce_sum(tf.square(p_factor)),
+                         tf.reduce_sum(tf.square(q_factor))])
+    loss = tf.reduce_sum(tf.square(r_var - r_hat)) + self.pre_lambda_val * reg_loss
+    rmse = tf.sqrt(tf.reduce_mean(tf.square(r_var - r_hat)))
+
+    optimizer = tf.compat.v1.train.MomentumOptimizer(self.pre_learning_rate, 0.9)
+    train_ops = [
+        optimizer.minimize(loss, var_list=[p_factor]),
+        optimizer.minimize(loss, var_list=[q_factor])
+    ]
+    return {
+        &#39;u&#39;: u_var,
+        &#39;i&#39;: i_var,
+        &#39;r&#39;: r_var,
+        &#39;train_ops&#39;: train_ops,
+        &#39;loss&#39;: loss,
+        &#39;rmse&#39;: rmse,
+        &#39;p&#39;: p_factor,
+        &#39;q&#39;: q_factor,
+    }</code></pre>
+</details>
+</dd>
+<dt id="reclab.recommenders.llorma.llorma_lib.llorma_g.Llorma.pre_train"><code class="name flex">
+<span>def <span class="ident">pre_train</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Pre-train a Matrix Factorization model for the full data</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pre_train(self):  # noqa: R0914
+    &#34;&#34;&#34;Pre-train a Matrix Factorization model for the full data
+    &#34;&#34;&#34;
+
+    # if self.use_cache:
+    #     # check if the pre-train factor are already initialized from a previous iteration
+    #     if (self.user_latent_init is not None) and (self.item_latent_init is not None):
+    #         return
+
+    # if self.pre_model is None:
+    #     self.pre_model = self.init_pre_model()
+
+    tf.compat.v1.reset_default_graph()
+    self.pre_model = self.init_pre_model()
+    pre_model = self.pre_model
+
+    pre_session = tf.compat.v1.Session()
+    pre_session.run(tf.compat.v1.global_variables_initializer())
+
+    min_valid_rmse = float(&#39;Inf&#39;)
+
+    random_model_idx = random.randint(0, 1000000)
+
+    file_path = &#39;{}/pre-model-{}.ckpt&#39;.format(self.result_path, random_model_idx)
+
+    train_data = self.batch_manager.train_data
+    u_vec = train_data[:, 0]
+    i_vec = train_data[:, 1]
+    r_vec = train_data[:, 2]
+
+    #saver = tf.train.Saver()
+    for itr in range(self.pre_train_steps):
+        for train_op in pre_model[&#39;train_ops&#39;]:
+            pre_session.run((train_op, pre_model[&#39;loss&#39;], pre_model[&#39;rmse&#39;]),
+                feed_dict={pre_model[&#39;u&#39;]: u_vec,
+                           pre_model[&#39;i&#39;]: i_vec,
+                           pre_model[&#39;r&#39;]: r_vec})
+        if (itr+1)%10==0:
+            valid_rmse, _ = self._get_rmse_pre_model(pre_session, pre_model)
+            print(&#39;Pre-train step: {}, train_error:{}&#39;.format(itr+1, valid_rmse))
+            # if valid_rmse &lt;= min_valid_rmse:
+            #     min_valid_rmse = valid_rmse
+            #     min_valid_iter = itr
+            # #saver.save(pre_session, file_path)
+
+    #saver.restore(pre_session, file_path)
+    p_factor, q_factor = pre_session.run(
+        (pre_model[&#39;p&#39;], pre_model[&#39;q&#39;]),
+        feed_dict={
+            pre_model[&#39;u&#39;]: self.batch_manager.train_data[:, 0],
+            pre_model[&#39;i&#39;]: self.batch_manager.train_data[:, 1],
+            pre_model[&#39;r&#39;]: self.batch_manager.train_data[:, 2]
+        })
+    if not os.path.exists(self.result_path):
+        os.makedirs(self.result_path)
+
+    np.save(&#39;{}/pre_train_p.npy&#39;.format(self.result_path), p_factor)
+    np.save(&#39;{}/pre_train_q.npy&#39;.format(self.result_path), q_factor)
+
+    pre_session.close()
+
+    self.user_latent_init = p_factor
+    self.item_latent_init = q_factor</code></pre>
+</details>
+</dd>
+<dt id="reclab.recommenders.llorma.llorma_lib.llorma_g.Llorma.predict"><code class="name flex">
+<span>def <span class="ident">predict</span></span>(<span>self, user_items)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Given user-item pairs predict the rating</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>user_items</code></strong> :&ensp;<code>Array-like, shape (N, 2)</code></dt>
+<dd>Each row is an (user, item) pair</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray, shape (N,)</code></dt>
+<dd>Predicted ratings</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def predict(self, user_items):
+    &#34;&#34;&#34;Given user-item pairs predict the rating
+
+    Parameters
+    ----------
+    user_items : Array-like, shape (N, 2)
+        Each row is an (user, item) pair
+
+    Returns
+    -------
+    np.ndarray, shape (N,)
+        Predicted ratings
+    &#34;&#34;&#34;
+
+    session = self.session
+    model = self.model
+
+    predict_k = np.stack(
+        [
+            self.anchor_manager.get_k(anchor_idx, user_items)
+            for anchor_idx in range(len(self.anchor_manager.anchor_idxs))
+        ],
+        axis=1)
+    predict_k = np.clip(predict_k, 0.0, 1.0)
+    predict_k = np.divide(predict_k, np.sum(predict_k, axis=1, keepdims=1))
+    predict_k[np.isnan(predict_k)] = 0
+
+    predict_r_hat = session.run(
+        model[&#39;r_hat&#39;],
+        feed_dict={
+            model[&#39;u&#39;]: user_items[:, 0],
+            model[&#39;i&#39;]: user_items[:, 1],
+            model[&#39;k&#39;]: predict_k
+        })
+    return predict_r_hat</code></pre>
+</details>
+</dd>
+<dt id="reclab.recommenders.llorma.llorma_lib.llorma_g.Llorma.reset_data"><code class="name flex">
+<span>def <span class="ident">reset_data</span></span>(<span>self, train_data, valid_data, test_data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reset the data of a recommender by instantiating a
+new BatchManager or modifying the existing one</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>train_data</code></strong> :&ensp;<code>Array-like, shape (N_train,3)</code></dt>
+<dd>Training data, each row is of the form
+(user_id, item_id, rating)</dd>
+<dt><strong><code>valid_data</code></strong> :&ensp;<code>Array-like, shape (N_valid, 3)</code></dt>
+<dd>Validation data, each row is of the form
+(user_id, item_id, rating)</dd>
+<dt><strong><code>test_data</code></strong> :&ensp;<code>Array-like, shape (N_test, 3)</code></dt>
+<dd>Test data, each row is of the form
+(user_id, item_idm rating)</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reset_data(self, train_data, valid_data, test_data):
+    &#34;&#34;&#34; Reset the data of a recommender by instantiating a
+    new BatchManager or modifying the existing one
+
+    Parameters
+    ----------
+    train_data : Array-like, shape (N_train,3)
+        Training data, each row is of the form
+        (user_id, item_id, rating)
+    valid_data : Array-like, shape (N_valid, 3)
+        Validation data, each row is of the form
+        (user_id, item_id, rating)
+    test_data : Array-like, shape (N_test, 3)
+        Test data, each row is of the form
+        (user_id, item_idm rating)
+    &#34;&#34;&#34;
+
+    if not self.batch_manager:
+        self.batch_manager = BatchManager(train_data, valid_data, test_data)
+    else:
+        self.batch_manager.update(train_data, valid_data, test_data)
+
+    N_ratings = self.batch_manager.train_data.shape[0]
+    if N_ratings &lt; self.n_anchor:
+        warnings.warn(&#34;The data has fewer ratings than anchor points: {}&lt;{}&#34;.format(
+                      N_ratings, self.n_anchor))
+        self.n_anchor = N_ratings</code></pre>
+</details>
+</dd>
+<dt id="reclab.recommenders.llorma.llorma_lib.llorma_g.Llorma.train"><code class="name flex">
+<span>def <span class="ident">train</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Train the LLORMA recommender</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def train(self):  # noqa: R0914
+    &#34;&#34;&#34; Train the LLORMA recommender
+    &#34;&#34;&#34;
+
+    self.pre_train()
+    #tf.reset_default_graph()
+    self.model = self.init_model()
+    model = self.model
+
+
+
+    self.anchor_manager = AnchorManager(self.n_anchor,
+                                        self.batch_manager,
+                                        self.user_latent_init,
+                                        self.item_latent_init,
+                                        self.kernel_fun)
+    session = init_session()
+
+    local_models = [
+        LocalModel(session, model, anchor_idx, self.anchor_manager, self.batch_manager)
+        for anchor_idx in range(self.n_anchor)
+    ]
+
+    train_k = _get_local_k(local_models, kind=&#39;train&#39;)
+    valid_k = _get_local_k(local_models, kind=&#39;valid&#39;)
+    test_k = _get_local_k(local_models, kind=&#39;test&#39;)
+
+    min_valid_rmse = float(&#39;Inf&#39;)
+    min_valid_iter = 0
+
+    train_data = self.batch_manager.train_data
+
+    #saver = tf.train.Saver()
+    for itr in range(self.train_steps):
+        file_path = &#39;{}/model-{}.ckpt&#39;.format(self.result_path, itr)
+        for start_m in range(0, train_data.shape[0], self.batch_size):
+            end_m = min(start_m + self.batch_size, train_data.shape[0])
+            u_vec = train_data[start_m:end_m, 0]
+            i_vec = train_data[start_m:end_m, 1]
+            r_vec = train_data[start_m:end_m, 2]
+            k_vec = train_k[start_m:end_m, :]
+            results = session.run(
+                [model[&#39;rmse&#39;]] + model[&#39;train_ops&#39;],
+                feed_dict={
+                    model[&#39;u&#39;]: u_vec,
+                    model[&#39;i&#39;]: i_vec,
+                    model[&#39;r&#39;]: r_vec,
+                    model[&#39;k&#39;]: k_vec,
+                })
+
+
+        if (itr+1)%10==0:
+            valid_rmse, test_rmse = self._get_rmse_model(session, model,
+                                                         valid_k, test_k)
+            print(&#34;Train step:{}, train error: {}, test error: {}&#34;.format(itr+1, test_rmse, valid_rmse))
+            # if valid_rmse &lt; min_valid_rmse:
+            #     min_valid_rmse = valid_rmse
+            #     min_valid_iter = itr
+            #     #saver.save(session, file_path)
+            #     #saver.restore(session, file_path)
+
+            # if itr &gt;= min_valid_iter + 100:
+            #     break
+
+
+
+    self.session = session
+    return(session, model)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="reclab.recommenders.llorma.llorma_lib.llorma_g.LocalModel"><code class="flex name class">
+<span>class <span class="ident">LocalModel</span></span>
+<span>(</span><span>session, model, anchor_idx, anchor_manager, batch_manager)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>LocalModel</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>session</code></strong> :&ensp;<code>obj: tf.session</code></dt>
+<dd>TF session</dd>
+<dt><strong><code>model</code></strong> :&ensp;<code>Dict-like</code></dt>
+<dd>Dictionary of TF variables, train operations
+Typically the output of self.init_pre_model()</dd>
+<dt><strong><code>anchor_idx</code></strong> :&ensp;<code>int</code></dt>
+<dd>Id of the anchor point for the local model</dd>
+<dt><strong><code>anchor_manager</code></strong> :&ensp;<code>obj: AnchorManager</code></dt>
+<dd>&nbsp;</dd>
+<dt><strong><code>batch_manager</code></strong> :&ensp;<code>obj: BatchManager</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<p>Instantiate a local model</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class LocalModel:  # noqa: R0903
+    &#34;&#34;&#34;LocalModel
+
+    Parameters
+    ----------
+    session : obj: tf.session
+        TF session
+    model : Dict-like
+        Dictionary of TF variables, train operations
+        Typically the output of self.init_pre_model()
+    anchor_idx : int
+        Id of the anchor point for the local model
+    anchor_manager : obj: AnchorManager
+    batch_manager : obj: BatchManager
+    &#34;&#34;&#34;
+    def __init__(self, session, model, anchor_idx, anchor_manager,
+                 batch_manager):
+        &#34;&#34;&#34; Instantiate a local model
+        &#34;&#34;&#34;
+        self.session = session
+        self.model = model
+        self.batch_manager = batch_manager
+        self.anchor_idx = anchor_idx
+        self.anchor_manager = anchor_manager
+
+        #print(&#39;&gt;&gt; update k in anchor_idx [{}].&#39;.format(anchor_idx))
+        self.train_k = anchor_manager.get_train_k(anchor_idx)
+        self.valid_k = anchor_manager.get_valid_k(anchor_idx)
+        self.test_k = anchor_manager.get_test_k(anchor_idx)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="reclab.recommenders.llorma.llorma_lib" href="index.html">reclab.recommenders.llorma.llorma_lib</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="reclab.recommenders.llorma.llorma_lib.llorma_g.BatchManager" href="#reclab.recommenders.llorma.llorma_lib.llorma_g.BatchManager">BatchManager</a></code></h4>
+<ul class="">
+<li><code><a title="reclab.recommenders.llorma.llorma_lib.llorma_g.BatchManager.update" href="#reclab.recommenders.llorma.llorma_lib.llorma_g.BatchManager.update">update</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="reclab.recommenders.llorma.llorma_lib.llorma_g.Llorma" href="#reclab.recommenders.llorma.llorma_lib.llorma_g.Llorma">Llorma</a></code></h4>
+<ul class="two-column">
+<li><code><a title="reclab.recommenders.llorma.llorma_lib.llorma_g.Llorma.init_model" href="#reclab.recommenders.llorma.llorma_lib.llorma_g.Llorma.init_model">init_model</a></code></li>
+<li><code><a title="reclab.recommenders.llorma.llorma_lib.llorma_g.Llorma.init_pre_model" href="#reclab.recommenders.llorma.llorma_lib.llorma_g.Llorma.init_pre_model">init_pre_model</a></code></li>
+<li><code><a title="reclab.recommenders.llorma.llorma_lib.llorma_g.Llorma.pre_train" href="#reclab.recommenders.llorma.llorma_lib.llorma_g.Llorma.pre_train">pre_train</a></code></li>
+<li><code><a title="reclab.recommenders.llorma.llorma_lib.llorma_g.Llorma.predict" href="#reclab.recommenders.llorma.llorma_lib.llorma_g.Llorma.predict">predict</a></code></li>
+<li><code><a title="reclab.recommenders.llorma.llorma_lib.llorma_g.Llorma.reset_data" href="#reclab.recommenders.llorma.llorma_lib.llorma_g.Llorma.reset_data">reset_data</a></code></li>
+<li><code><a title="reclab.recommenders.llorma.llorma_lib.llorma_g.Llorma.train" href="#reclab.recommenders.llorma.llorma_lib.llorma_g.Llorma.train">train</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="reclab.recommenders.llorma.llorma_lib.llorma_g.LocalModel" href="#reclab.recommenders.llorma.llorma_lib.llorma_g.LocalModel">LocalModel</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.4</a>.</p>
+</footer>
+</body>
+</html>
