@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>Welcome to Reclab!</title>
+<title>Welcome to RecLab!</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -38,7 +38,7 @@ pre {background-color: #d3ebf0}
 
 <!-- Header -->
 <header class="w3-container w3-red w3-center" style="padding:128px 16px">
-  <h1 class="w3-margin w3-jumbo">Reclab</h1>
+  <h1 class="w3-margin w3-jumbo">RecLab</h1>
   <p class="w3-xlarge">A flexible simulation framework for evaluating recommender systems in dynamic environments.</p>
   <a href="/docs"><button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Documentation</button></a>
   <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Paper</button>
@@ -48,9 +48,9 @@ pre {background-color: #d3ebf0}
 <div class="w3-row-padding w3-padding-64 w3-container">
   <div class="w3-content">
     <div class="w3-twothird">
-      <h1>What is Reclab?</h1>
-      <h5 class="w3-padding-32">Recommender systems are tradtionally evaluated on static datasets, such as the MovieLens dataset. However, this can miss the feedback loop between user preferences and the recommendation model.</h5>
-      <p class="w3-text-grey">Reclab provides a framework for evaluating any recommender system within a broad set of user environments.</p>
+      <h1>What is RecLab?</h1>
+      <h5 class="w3-padding-32">RecLab is a simulation framework used to evaluate recommendation algorithms. The framework makes no platform-specific assumptions. As such, it can be used to evaluate recommendation algorithms implemented with any computational library.</h5>
+      <p class="w3-text-grey">RecLab also implements many existing recommenders for the purpose of benchmarking. The recommenders include factorization machines, neural models, and simple baseline algorithms.</p>
     </div>
 
     <div class="w3-third w3-center">
@@ -77,9 +77,9 @@ pre {background-color: #d3ebf0}
       items, users, ratings = env.reset()
       <strong>for _ in </strong>range(<span class='keyword'>1000</span>):
         online_users = env.online_users
-        # Your recommendation algorithm here. This recommends 10 random items to each online user.
-        recommendations = np.random.choice(items, size=(len(online_users), 10))
-        items, users, ratings, info = env.step(recommendations)
+        # Your recommender here. This recommends random items.
+        recs = np.random.choice(items, size=(len(online_users), 10))
+        items, users, ratings, info = env.step(recs)
       env.close()
       </pre code>
       <p class="w3-text-grey"></p>
@@ -95,7 +95,7 @@ pre {background-color: #d3ebf0}
 
     <div class="w3-twothird">
       <h1>Environments</h1>
-      <h5 class="w3-padding-32">Reclab's environments span a variety of user behaviors.</h5>
+      <h5 class="w3-padding-32">ReLLab's environments span a variety of user behaviors.</h5>
 
     </div>
   </div>
@@ -105,8 +105,8 @@ pre {background-color: #d3ebf0}
   <div class="w3-content">
     <div class="w3-twothird">
       <h1>Recommenders</h1>
-      <h5 class="w3-padding-32">Reclab includes a suite of recommender models, ranging from battle-tested matrix factorization models to more recent neural approaches.</h5>
-      <p class="w3-text-grey">Reclab implements twelve different recommender models for recommendation, though the framework is designed to allow you to easily evaluate a custom model.</p>
+      <h5 class="w3-padding-32">RecLab includes a suite of recommender models, ranging from battle-tested matrix factorization models to more recent neural approaches.</h5>
+      <p class="w3-text-grey">RecLab implements twelve different recommender models for recommendation, though the framework is designed to allow you to easily evaluate a custom model.</p>
     </div>
 
     <div class="w3-third w3-center">
