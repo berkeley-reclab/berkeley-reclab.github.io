@@ -71,15 +71,16 @@ pre {background-color: #d3ebf0}
       <h5 class="w3-padding-32">Getting started is simple</h5>
       <pre code>
 
-      <strong>import</strong> models
-      <strong>import</strong> math
-      <strong>import</strong> os
-
-      <strong>for i in </strong>range(<span class='keyword'>100</span>):
-        env.step()
-        recs = rec.update(users, items, ratings)
-        rec.update()
-        rec.update()
+      <strong>import</strong> numpy as np
+      <strong>import</strong> reclab
+      env = reclab.make('topics-dynamic-v1')
+      items, users, ratings = env.reset()
+      <strong>for _ in </strong>range(<span class='keyword'>1000</span>):
+        online_users = env.online_users
+        # Your recommendation algorithm here. This recommends 10 random items to each online user.
+        recommendations = np.random.choice(items, size=(len(online_users), 10))
+        items, users, ratings, info = env.step(recommendations)
+      env.close()
       </pre code>
       <p class="w3-text-grey"></p>
     </div>
