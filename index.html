@@ -16,6 +16,29 @@ pre {background-color: #d3ebf0}
 .w3-button {background-color: #000; background-image: url("bg.jpg")}
 
 .keyword {color: teal}
+
+@media screen and (max-width: 1000px) {
+  img {
+    zoom: 0.7;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  pre {
+    zoom: 0.8;
+  }
+}
+@media screen and (max-width: 800px) {
+  pre {
+    zoom: 0.7;
+  }
+}
+@media screen and (max-width: 700px) {
+  pre {
+    zoom: 0.6;
+  }
+}
+
 </style>
 <body>
 
@@ -51,6 +74,7 @@ pre {background-color: #d3ebf0}
     <div class="w3-twothird">
       <h1>What is RecLab?</h1>
       <h5 class="w3-padding-32">RecLab is a simulation framework used to evaluate recommendation algorithms. The framework makes no platform-specific assumptions. As such, it can be used to evaluate recommendation algorithms implemented with any computational library.</h5>
+      <p class="w3-text-grey">On the right is a visualization of the interaction between environment and recommender.</p>
       <p class="w3-text-grey">RecLab also implements many existing recommenders for the purpose of benchmarking. The recommenders include factorization machines, neural models, and simple baseline algorithms.</p>
     </div>
 
@@ -69,7 +93,22 @@ pre {background-color: #d3ebf0}
 
     <div class="w3-twothird">
       <h1>Getting Started</h1>
-      <h5 class="w3-padding-32">Getting started is simple</h5>
+      <h5 class="w3-padding-32">To install RecLab, run</h5>
+        <pre code>
+
+      pip install reclab
+      </pre code>
+      <p class="w3-text-grey">
+        RecLab also implements a set of benchmark recommender systems, however the default pip install command will not 
+        fetch the necessary dependencies. To fetch these dependencies you must have g++ 5.0 or higher and python3-dev installed. You should then run
+      </p>
+      <pre code>
+
+      pip install reclab[recommenders]
+        </pre code></h5>
+        <p class="w3-text-grey">which will install both the core reclab framework and the benchmark recommendation algorithms.</p>
+        <h5>Example</h5>
+        <p class="w3-text-grey">The code below shows a simple use-case with random recommendations.</p>
       <pre code>
 
       <strong>import</strong> numpy as np
@@ -83,7 +122,6 @@ pre {background-color: #d3ebf0}
         items, users, ratings, info = env.step(recs)
       env.close()
       </pre code>
-      <p class="w3-text-grey"></p>
     </div>
   </div>
 </div>
@@ -97,6 +135,7 @@ pre {background-color: #d3ebf0}
     <div class="w3-twothird">
       <h1>Environments</h1>
       <h5 class="w3-padding-32">ReLLab's environments span a variety of user behaviors.</h5>
+      <p class='w3-text-grey'>To see a description of available environments see the <a href='/docs/environments/'>list of enviroments</a>.</p>
 
     </div>
   </div>
